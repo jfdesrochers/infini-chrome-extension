@@ -1,0 +1,50 @@
+body {
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: top top;
+}
+
+span#header {
+    vertical-align: middle;
+    white-space: nowrap;
+    display: table-cell;
+    text-align: center;
+}
+
+.etsheading {
+    font-family: sans-serif;
+    font-size: 24px;
+    color: #000;
+    vertical-align: bottom;
+}
+
+table#options {
+    font-family: sans-serif;
+    color: #000;
+    font-size: small;
+}
+
+/* unvisited link */
+a:link {
+   color: #c00;
+    text-decoration: none;
+ }
+
+/* visited link */
+a:visited {
+   color: #c00;
+    text-decoration: none;
+ }
+
+/* mouse over link */
+a:hover {
+   color: #c00;
+    text-decoration: underline;
+ }
+
+/* selected link */
+a:active {
+   color: #600;
+    text-decoration: underline;
+ }

@@ -1,0 +1,83 @@
+{
+   "extname": {
+       "message": "Infini by J-F Desrochers"
+   },
+   "extdesc": {
+       "message": "Adds the ability to produce personnalized flyers from a list of products picked from staples.ca and/or staplespromoproducts.ca."
+   },
+   "titlefilename": {
+       "message": "/assets/img/titleEN.svg"
+   },
+   "infheader": {
+       "message": "Bannière des allées à l'infini"
+   },
+   "uneheader": {
+       "message": "Bannière des aubaines à la une"
+   },
+   "momheader": {
+       "message": "Bannière de la fête des mères"
+   },
+   "dadheader": {
+       "message": "Bannière de la fête des pères"
+   },
+   "eteheader": {
+       "message": "Bannière de la saison estivale"
+   },
+   "btsheader": {
+       "message": "Bannière de la rentrée scolaire"
+   },
+   "infheader_file": {
+       "message": "infheader.png"
+   },
+   "uneheader_file": {
+       "message": "uneheader.png"
+   },
+   "momheader_file": {
+       "message": "momheader.png"
+   },
+   "dadheader_file": {
+       "message": "dadheader.png"
+   },
+   "eteheader_file": {
+       "message": "eteheader.png"
+   },
+   "btsheader_file": {
+       "message": "btsheader.png"
+   },
+   "savenameprompt": {
+       "message": "Please enter a name for this list :"
+   },
+   "clearlistprompt": {
+       "message": "This operation will remove ALL the contents of this list. Please press OK if you want to continue."
+   },
+   "itemlabel": {
+       "message": "Item: "
+   },
+   "modellabel": {
+       "message": "Model: "
+   },
+   "addedlabel": {
+       "message": "Added!"
+   },
+   "addbtnlabel": {
+       "message": "Add to the list"
+   },
+   "bannerlabel": {
+       "message": "Choose a banner :"
+   },
+   "savebtnlabel": {
+       "message": "Save list"
+   },
+   "loadbtnlabel": {
+       "message": "Load list"
+   },
+   "emptylistlabel": {
+       "message": "Clear list"
+   },
+   "generatelabel": {
+       "message": "Generate flyer"
+   },
+   "extloadedmessage": {
+       "message": "Infini extension loaded."
+   }
+}

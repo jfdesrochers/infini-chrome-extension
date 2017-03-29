@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Infini",
+  "short_name": "infini",
+  "default_locale": "fr",
+  "version": "1.0.0",
+  "description": "__MSG_extdesc__",
+  "icons": { 
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png" 
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "name": "Infini",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "__MSG_extname__"
+  },
+  "author": "Jean-François Desrochers",
+  "content_scripts": [{
+    "js": ["assets/js/mithril.min.js","infini.js"],
+    "css": ["assets/css/font-awesome.min.css", "infini.css"],
+    "matches": ["*://*.staples.ca/*", "*://*.staplespromoproducts.ca/*"],
+    "run_at": "document_end"
+    }],
+  "homepage_url": "https://github.com/jfdesrochers/infini-chrome-extension",
+  "permissions": [ "storage", "*://*.staples.ca/*", "*://*.staplespromoproducts.ca/*" ],
+  "web_accessible_resources": ["assets/*"]
+}

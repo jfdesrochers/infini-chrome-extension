@@ -3,7 +3,7 @@
   "name": "Infini",
   "short_name": "infini",
   "default_locale": "fr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "__MSG_extdesc__",
   "icons": { 
     "16": "icon16.png",

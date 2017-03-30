@@ -1,4 +1,7 @@
 {
+   "stapleslogo": {
+       "message": "StaplesLogoFR.svg"
+   },
    "extname": {
        "message": "Infini par J-F Desrochers"
    },
@@ -7,42 +10,6 @@
    },
    "titlefilename": {
        "message": "/assets/img/title.svg"
-   },
-   "infheader": {
-       "message": "Bannière des allées à l'infini"
-   },
-   "uneheader": {
-       "message": "Bannière des aubaines à la une"
-   },
-   "momheader": {
-       "message": "Bannière de la fête des mères"
-   },
-   "dadheader": {
-       "message": "Bannière de la fête des pères"
-   },
-   "eteheader": {
-       "message": "Bannière de la saison estivale"
-   },
-   "btsheader": {
-       "message": "Bannière de la rentrée scolaire"
-   },
-   "infheader_file": {
-       "message": "infheader.png"
-   },
-   "uneheader_file": {
-       "message": "uneheader.png"
-   },
-   "momheader_file": {
-       "message": "momheader.png"
-   },
-   "dadheader_file": {
-       "message": "dadheader.png"
-   },
-   "eteheader_file": {
-       "message": "eteheader.png"
-   },
-   "btsheader_file": {
-       "message": "btsheader.png"
    },
    "savenameprompt": {
        "message": "Entrez un nom pour sauvegarder cette liste :"
@@ -62,8 +29,11 @@
    "addbtnlabel": {
        "message": "Ajouter à la liste"
    },
-   "bannerlabel": {
-       "message": "Choisissez une bannière :"
+   "titlelabel": {
+       "message": "Titre pour cette liste :"
+   },
+   "subtitlelabel": {
+       "message": "Sous-titre pour cette liste :"
    },
    "savebtnlabel": {
        "message": "Sauvegarder"

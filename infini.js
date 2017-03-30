@@ -1,14 +1,5 @@
 _ = chrome.i18n.getMessage
 
-var bannerList = [
-    [_('infheader_file'), _('infheader')],
-    [_('uneheader_file'), _('uneheader')],
-    [_('momheader_file'), _('momheader')],
-    [_('dadheader_file'), _('dadheader')],
-    [_('eteheader_file'), _('eteheader')],
-    [_('btsheader_file'), _('btsheader')]
-]
-
 var limit = function(o, n) {
     if (o.length <= n) return o;
     let trimmedString = o.substr(0, n);
@@ -65,18 +56,14 @@ Infini.oninit = function () {
         }
     }
 
-    self.currentBanner = Property(bannerList[0][0]);
-    self.currentBanner.setSync = function (value) {
-        self.currentBanner(value);
-        chrome.storage.sync.set({currentbanner: value});
-    }
+    self.listBanner = {title: '', subtitle: ''};
     self.productList = {};
     chrome.storage.sync.get(null, function (items) {
         if ('productlist' in items) {
             self.productList = items['productlist'];
         }
-        if ('currentbanner' in items) {
-            self.currentBanner(items['currentbanner']);
+        if ('listbanner' in items) {
+            self.listBanner = items['listbanner'];
         }
         m.redraw();
     });
@@ -94,12 +81,24 @@ Infini.oninit = function () {
         setTimeout(function () {document.querySelector('#InfiniRoot .badge').classList.remove('peak');}, 500);
     }
 
+    self.changeBanner = function (kind) {
+        return function (newValue) {
+            self.listBanner[kind] = newValue;
+        }
+    }
+
+    self.saveBanner = function (e) {
+        chrome.storage.sync.set({listbanner: self.listBanner});
+    }
+
     self.loadFromFile = function (f) {
         if (!f) return;
         var reader = new FileReader();
         reader.onload = function (e) {
-            self.productList = JSON.parse(e.target.result);
-            chrome.storage.sync.set({productlist: self.productList});
+            var j = JSON.parse(e.target.result);
+            self.productList = j.productList;
+            self.listBanner = j.listBanner;
+            chrome.storage.sync.set({productlist: self.productList, listbanner: self.listBanner});
             self.uploader.value = '';
             m.redraw();
         }
@@ -118,7 +117,8 @@ Infini.oninit = function () {
             // Remove previous Object URL, if necessary
             URL.revokeObjectURL(self.downloader.href);
             // Create new Object URL and download
-            self.downloader.href = URL.createObjectURL(new Blob([JSON.stringify(self.productList)], {'type': 'application/json'}));
+            var j = {productList: self.productList, listBanner: self.listBanner}
+            self.downloader.href = URL.createObjectURL(new Blob([JSON.stringify(j)], {'type': 'application/json'}));
             self.downloader.download = savename + '.infini';
             self.downloader.click();
         }
@@ -128,6 +128,7 @@ Infini.oninit = function () {
         e.preventDefault();
         if (!confirm(_('clearlistprompt'))) return;
         self.productList = {};
+        self.listBanner = {title: '', subtitle: ''};
         chrome.storage.sync.set({productlist: self.productList});
     }
 
@@ -177,8 +178,8 @@ Infini.oninit = function () {
             if (key == 'productlist') {
                 self.productList = changes[key].newValue;
                 m.redraw();
-            } else if (key == 'currentbanner') {
-                self.currentBanner(changes[key].newValue);
+            } else if (key == 'listbanner') {
+                self.listBanner = changes[key].newValue;
                 m.redraw();
             }
         }
@@ -240,14 +241,23 @@ Infini.view = function () {
             }
         }, [
             m('ul.sidebar-group', [
-                m('li.sidebar-item.banner-container', m('img.banner', {src: chrome.runtime.getURL('/assets/img/' + self.currentBanner())})),
                 m('li.sidebar-item', [
-                    m('label', _('bannerlabel')),
-                    m('select.form-control#infini-banner', {onchange: m.withAttr('value', self.currentBanner.setSync)}, [
-                        bannerList.map(function (o) {
-                            return m('option', {key: o[0], value: o[0], selected: (o[0] == self.currentBanner())}, o[1])
-                        })
-                    ])
+                    m('label', _('titlelabel')),
+                    m('input.form-control#infini-title', {
+                        type: 'text',
+                        onkeyup: m.withAttr('value', self.changeBanner('title')),
+                        onchange: self.saveBanner,
+                        value: self.listBanner.title
+                    })
+                ]),
+                m('li.sidebar-item', [
+                    m('label', _('subtitlelabel')),
+                    m('input.form-control#infini-subtitle', {
+                        type: 'text',
+                        onkeyup: m.withAttr('value', self.changeBanner('subtitle')),
+                        onchange: self.saveBanner,
+                        value: self.listBanner.subtitle
+                    })
                 ])
             ]),
             m('div.list-wrapper', m('ul.sidebar-group', [

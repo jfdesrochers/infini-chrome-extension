@@ -27,13 +27,13 @@ var ResultsApp = {};
 ResultsApp.oninit = function () {
     var self = this;
     self.productList = {};
-    self.currentBanner = '';
+    self.listBanner = {title: '', subtitle: ''};
     chrome.storage.sync.get(null, function (items) {
         if ('productlist' in items) {
             self.productList = items['productlist'];
         }
-        if ('currentbanner' in items) {
-            self.currentBanner = items['currentbanner'];
+        if ('listbanner' in items) {
+            self.listBanner = items['listbanner'];
         }
         m.redraw();
     });
@@ -42,7 +42,13 @@ ResultsApp.oninit = function () {
 ResultsApp.view = function () {
     var self = this;
     return m('div.container', [
-        self.currentBanner ? m('div.header.col.centered.w100', m('img', {src: chrome.runtime.getURL('/assets/img/' + self.currentBanner)})) : '',
+        m('div.header.centered.w100', [
+            m('div.titlelogo', m('img', {src: chrome.runtime.getURL('/assets/img/' + chrome.i18n.getMessage('stapleslogo'))})),
+            m('div.titles', [
+                m('h1.title', self.listBanner.title),
+                m('h2.subtitle', self.listBanner.subtitle)
+            ])
+        ]),
         Object.keys(self.productList).length > 0 ? gridify(self).map(function (o) {
             return m('div.row', o);
         }) : ''

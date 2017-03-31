@@ -122,12 +122,12 @@ img {
     display: table-cell;
     vertical-align: middle;
     position: relative;
+    width: 200px;
 }
 
 .titlelogo > img {
-    height: 150px;
     display: block;
-    width: auto;
+    width: 100%;
 }
 
 .titles {
@@ -140,14 +140,14 @@ img {
 }
 
 .titles > .title {
-    display: inline-block;
+    display: block;
     margin: 0;
     font-size: 32px;
 }
 
 .titles > .subtitle {
     font-weight: 300;
-    display: inline-block;
+    display: block;
     margin: 0;
     font-size: 24px;
     margin-top: 10px;

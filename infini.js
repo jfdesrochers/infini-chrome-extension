@@ -209,7 +209,7 @@ Infini.view = function () {
                     m('div.overlay', {onclick: self.refreshImage}, m('div.fa.fa-refresh'))
                 ]),
                 m('div.itembody', [
-                    m('div.title', limit(self.productData.title, 90)),
+                    m('div.title', self.productData.title),
                     m('div.sku', _('itemlabel') + self.productData.sku),
                     m('div.model', _('modellabel') + self.productData.model)
                 ]),
@@ -270,7 +270,7 @@ Infini.view = function () {
                     }},[
                         m('div.itempic', m('img.logo', {src: self.productList[k].imgUrl})),
                         m('div.itembody', [
-                            m('div.title', limit(self.productList[k].title, 30)),
+                            m('div.title', self.productList[k].title),
                             m('div.sku', 'Item: ' + k)
                         ]),
                         m('div.itembody.deletebtn', {onclick: self.removeItem(k)},m('span.fa.fa-times-circle'))

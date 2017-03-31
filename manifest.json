@@ -3,7 +3,7 @@
   "name": "Infini",
   "short_name": "infini",
   "default_locale": "fr",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "__MSG_extdesc__",
   "icons": { 
     "16": "icon16.png",
@@ -24,10 +24,10 @@
   "content_scripts": [{
     "js": ["assets/js/mithril.min.js","infini.js"],
     "css": ["assets/css/font-awesome.min.css", "infini.css"],
-    "matches": ["*://*.staples.ca/*", "*://*.staplespromoproducts.ca/*"],
+    "matches": ["*://staples.ca/*", "*://www.staples.ca/*", "*://*.staplespromoproducts.ca/*"],
     "run_at": "document_end"
     }],
   "homepage_url": "https://github.com/jfdesrochers/infini-chrome-extension",
-  "permissions": [ "storage", "*://*.staples.ca/*", "*://*.staplespromoproducts.ca/*" ],
+  "permissions": [ "storage", "*://*.staples.ca/*", "*://www.staples.ca/*", "*://*.staplespromoproducts.ca/*" ],
   "web_accessible_resources": ["assets/*"]
 }

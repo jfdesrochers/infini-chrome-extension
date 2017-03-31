@@ -28,19 +28,23 @@ body {
 #InfiniRoot .mainbar {
     padding: 4px 10px;
     text-align: center;
-    float: none;
+    /*float: none;*/
+    display: flex;
+    justify-content: space-between;
 }
 
 #InfiniRoot .baritem-left {
-    float: left;
+    /*float: left;*/
 }
 
 #InfiniRoot .baritem-right {
-    float: right;
+    /*float: right;*/
 }
 
 #InfiniRoot .pageitem {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    min-width: 0;
     text-align: left;
     color: #000;
     background-color: #fff;
@@ -49,10 +53,33 @@ body {
     padding: 5px;
 }
 
+#InfiniRoot .mainbar .pageitem {
+    margin: 0 10px;
+}
+
 #InfiniRoot .itempic, #InfiniRoot .itembody, #InfiniRoot .listbody {
     display: table-cell;
     vertical-align: middle;
     position: relative;
+}
+
+#InfiniRoot .itembody
+{
+    min-width: 0;
+    display: inline-block;
+}
+
+#InfiniRoot .itembody > .title, #InfiniRoot .itembody > .sku, #InfiniRoot .itembody > .model
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#InfiniRoot .itempic, #InfiniRoot .addbtn, #InfiniRoot .addedbtn
+{
+    display: inline-block;
+    flex-shrink: 0;
 }
 
 #InfiniRoot .itempic .logo {
@@ -310,6 +337,7 @@ body {
     color: #ccc;
     font-size: 20px;
     opacity: 0;
+    flex-shrink: 0;
 }
 
 #InfiniRoot .deletebtn:active {

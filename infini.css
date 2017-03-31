@@ -17,6 +17,10 @@ body {
     font-size: 13px;
 }
 
+#InfiniRoot div {
+    float: none;
+}
+
 #InfiniRoot .invisible {
     display: none;
 }
@@ -269,6 +273,7 @@ body {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #fff;
 }
 
 #InfiniRoot .form-control {

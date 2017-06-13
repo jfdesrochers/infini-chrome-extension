@@ -37,16 +37,16 @@ var Infini = {};
 
 Infini.oninit = function () {
     var self = this;
-    self.isProductPage = /product_\d+_/gi.test(location.href) || /\/product\//gi.test(location.href);
+    self.isProductPage = /product_\d+_/gi.test(location.href) || /\/product/gi.test(location.href);
     self.productData = {};
     self.sidebarOpen = false;
     self.downloader = null;
     self.uploader = null;
     if (self.isProductPage) {
         if (/staplespromoproducts/gi.test(location.href)) {
-            self.productData.title = document.querySelector('h1').textContent;
-            self.productData.imgUrl = document.querySelector('.prod-img').src
-            self.productData.sku = document.querySelector('.sku').textContent.replace('SKU: ', '');
+            self.productData.title = document.querySelector('#container-print > table > tbody > tr:first-child > td:nth-child(2) > table > tbody > tr:first-child > td > b').textContent;
+            self.productData.imgUrl = document.querySelector('#container-print > table > tbody > tr:first-child > td:first-child img').src
+            self.productData.sku = document.querySelector('#container-print > table > tbody > tr:first-child > td:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(2)').textContent;
             self.productData.model = self.productData.sku;
         } else {
             self.productData.title = document.querySelector('h1').textContent;
